@@ -1,0 +1,13 @@
+apiVersion: v1                                      # API version
+kind: Service                                       # Type of kubernetes resource
+metadata:
+  name: blog-postgres                               # Name of the resource
+  labels:                                           # Labels that will be applied to the resource
+    app: blog-postgres
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+  selector:                                         # Selects any Pod with labels `app=blog-postgres,tier=postgres`
+    app: blog-postgres
+    tier: postgres
